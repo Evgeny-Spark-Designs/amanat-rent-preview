@@ -1,0 +1,69 @@
+*{box-sizing:border-box}
+html{overflow-x:hidden}
+body{margin:0;font-family:'Onest',Arial,sans-serif;background:#fff;overflow-x:hidden}
+a{color:inherit}
+a:hover{opacity:.82}
+svg use{fill:none}
+button{font-family:inherit}
+
+.hover-lift{transition:transform .25s ease}
+.hover-lift:hover{transform:translateY(-2px)}
+.hover-shadow{transition:box-shadow .4s ease}
+.hover-shadow:hover{box-shadow:0 16px 40px rgba(1,2,5,.14)}
+
+[data-menu-nav]{animation:fadeInUp .25s ease both}
+
+@keyframes marquee-l{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marquee-r{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+@media (max-width:900px){
+  [data-title-row]{flex-direction:column;align-items:flex-start !important}
+  [data-title-row] [data-title-cta]{text-align:left !important;align-items:flex-start}
+}
+@media (max-width:960px){ [data-wave-line]{display:none} }
+
+@media (max-width:700px){
+  [data-cat-grid]{grid-template-columns:1fr !important}
+}
+@media (max-width:640px){
+  [data-catalog-grid]{grid-template-columns:1fr !important}
+}
+@media (max-width:720px){
+  [data-benefits-grid]{grid-template-columns:repeat(2,1fr) !important}
+}
+@media (max-width:860px){
+  [data-closing-grid]{grid-template-columns:1fr !important}
+}
+@media (max-width:700px){
+  [data-product-grid]{grid-template-columns:1fr !important}
+  [data-specs-grid]{grid-template-columns:1fr !important;column-gap:0 !important}
+}
+@media (max-width:1024px){
+  /* Hero photo is wide and shows 3 vehicles spread across it - at 100svh height
+     on a narrow/portrait screen (phone or tablet), object-fit:cover would crop
+     most of them out. Show the image at its own aspect ratio instead, with the
+     text below it. */
+  [data-hero]{min-height:0 !important}
+  [data-hero-img]{position:relative !important;inset:auto !important;height:auto !important;aspect-ratio:16/12;object-position:100% center !important}
+  [data-hero-gradient]{display:none !important}
+  [data-hero-content]{position:relative !important;max-width:none !important;padding:28px clamp(1rem,4vw,4rem) 32px !important;background:#0e0b0a}
+}
+
+.contact-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:flex-end;justify-content:center}
+.contact-modal[hidden]{display:none}
+.contact-modal__backdrop{position:absolute;inset:0;background:rgba(1,2,5,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.contact-modal__card{position:relative;width:100%;max-width:420px;background:#fff;border-radius:24px 24px 0 0;padding:28px 24px calc(28px + env(safe-area-inset-bottom));box-shadow:0 -20px 60px rgba(0,0,0,.3);animation:modalUp .25s cubic-bezier(.25,.1,.25,1) both}
+.contact-modal__close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:999px;border:none;background:#f0f1f2;color:#010205;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.contact-modal__title{margin:0 0 20px;font-size:1.1rem;font-weight:600;color:#010205;padding-right:32px}
+.contact-modal__options{display:flex;flex-direction:column;gap:10px}
+.contact-modal__option{display:flex;align-items:center;gap:14px;text-decoration:none;color:#010205;background:#f7f7f8;border-radius:14px;padding:14px 16px;font-weight:500;font-size:.98rem;transition:background .2s ease}
+.contact-modal__option:hover{opacity:1;background:#eceef0}
+.contact-modal__icon{width:38px;height:38px;border-radius:999px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+@keyframes modalUp{from{transform:translateY(24px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+@media (min-width:560px){
+  .contact-modal{align-items:center}
+  .contact-modal__card{border-radius:24px}
+}
